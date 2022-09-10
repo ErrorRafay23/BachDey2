@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> _SignInManager
+
+
+<ul class="navbar-nav ml-auto">
+
+
+    @if (_SignInManager.IsSignedIn(User))
+    {
+
+        <li class="nav-item">
+            <a class="nav-link btn btn-link py-0">@User.Identity.Name</a>
+        </li>
+
+
+
+
+        <li class="nav-item">
+            <form method="post" asp-action="Logout" asp-controller="account">
+                <button type="submit" class="nav-link btn btn-link py-0" style="width:auto;"> Logout </button>
+            </form>
+        </li>
+    }
+    else
+    {
+
+        <li class="nav-item">
+            <a asp-action="AddProduct" asp-controller="home" class="nav-link">Sell</a>
+        </li>
+
+        <li class="nav-item">
+            <a asp-action="register" asp-controller="account" class="nav-link">Register</a>
+        </li>
+
+        <li class="nav-item">
+            <a asp-action="login" asp-controller="account" class="nav-link">Login</a>
+        </li>
+
+
+
+    }
+</ul>
